@@ -1,0 +1,13 @@
+<div>
+    <h1> <%= @topic %> </h1>
+    <div class="h-96 border border-gray-900 overflow-y-auto">
+        <%= for m <- @messages do %>
+            <p><%= m.name %> </p>
+            <p><%= m.text %></p>
+        <% end %>
+    </div>
+    <form phx-submit="send">
+        <input type="text" name="text"/>
+        <button> 보내기 </button>
+    </form>
+</div>
