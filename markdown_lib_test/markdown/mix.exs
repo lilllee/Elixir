@@ -48,7 +48,8 @@ defmodule Markdown.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      {:earmark_parser, "~> 1.4"}
+      {:earmark_parser, "~> 1.4"},
+      {:earmark, "~> 1.4.46"}
     ]
   end
 
