@@ -18,6 +18,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Source: https://github.com/phoenixframework/phoenix
 
 ## TODO
-- [ ] Read Markdown File Path
+- [x] Read Markdown File Path
 - [ ] Convert that file to HTML
 - [ ] ...
