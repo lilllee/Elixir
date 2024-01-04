@@ -19,6 +19,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## TODO
 - [x] Read Markdown File Path
-- [x] md file to HTML
-- [x] Display .md file list
-- [ ] File change
+- [x] md File To HTML
+- [x] Display .md File List
+- [ ] Check Current Directory Structure and File Loading
+- [ ] Prepare for Category Feature Implementation
+- [ ] Add Screen Category Functionality
+- [ ] Implement File Change on Button Click

@@ -17,9 +17,9 @@ defmodule MarkdownWeb.Router do
   scope "/", MarkdownWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    # get "/", PageController, :home
 
-    live "/mr", Mark.Index
+    live "/", Mark.Index
   end
   # Other scopes may use custom stacks.
   # scope "/api", MarkdownWeb do
