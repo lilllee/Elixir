@@ -1,2 +1,6 @@
+<h1> 현재 파일 <%= @count %> 개 </h1>
+<%= for m <- @fileList do %>
+    <button phx-click="click"><%= m %> </button>
+<% end %>
 <%= @markdown %>
 

@@ -19,5 +19,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## TODO
 - [x] Read Markdown File Path
-- [ ] Convert that file to HTML
-- [ ] ...
+- [x] md file to HTML
+- [x] Display .md file list
+- [ ] File change
