@@ -24,4 +24,4 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [ ] Check Current Directory Structure and File Loading
 - [ ] Prepare for Category Feature Implementation
 - [ ] Add Screen Category Functionality
-- [ ] Implement File Change on Button Click
+- [X] Implement File Change on Button Click

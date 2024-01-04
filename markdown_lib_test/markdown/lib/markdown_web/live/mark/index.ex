@@ -7,7 +7,11 @@ defmodule MarkdownWeb.Mark.Index do
     if connected?(socket) do
       MarkdownWeb.Endpoint.subscribe("post")
     end
-    {:ok, assign(socket, markdown: markdown(), topic: "post", fileList: file_list() ,count: current_files())}
+    {:ok, assign(socket, markdown: markdown("test.md"),
+     topic: "post",
+     fileList: file_list(),
+     count: current_files())
+    }
   end
 
   def getFile(file) do
@@ -15,13 +19,9 @@ defmodule MarkdownWeb.Mark.Index do
     File.read(path)
   end
 
-  def getFiles do
+  def markdown(mdF) do
 
-  end
-
-  def markdown do
-
-    path = Enum.join([global_path(), "test.md"], "")
+    path = Enum.join([global_path(), mdF], "")
     text = File.read!(path)
 
     String.trim(text)
@@ -34,19 +34,23 @@ defmodule MarkdownWeb.Mark.Index do
     Enum.count(Path.wildcard(path))
   end
 
-  def handle_event("click", unsigned_params, socket) do
-
+  def handle_event("mdClick", %{"filename" => val1}, socket) do
+    {:noreply, update_markdown(val1, socket)}
   end
+
+  defp update_markdown(file_name, socket) do
+    html_content = markdown(file_name)
+    assign(socket, :markdown, html_content)
+  end
+
 
   def file_list do
     files = Path.wildcard("lib/markdown_web/files/*.md")
     Enum.map(files, fn path ->
       String.replace(path, global_path(), "")
-    end)
+    end
+  )
 
-    # path = "lib/markdown_web/files/test.md"
-    # [_ | tail] = String.split(path, "/")
-    # file_name = List.last(tail)
   end
 
 end
