@@ -1,4 +1,4 @@
-![image](https://github.com/lilllee/Elixir/assets/45530877/73a8ce89-9bec-4928-80ef-db86f03c4f45)# Markdown
+# Markdown
 
 To start your Phoenix server:
 
