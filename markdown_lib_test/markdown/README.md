@@ -1,4 +1,4 @@
-# Markdown
+![image](https://github.com/lilllee/Elixir/assets/45530877/73a8ce89-9bec-4928-80ef-db86f03c4f45)# Markdown
 
 To start your Phoenix server:
 
@@ -25,3 +25,5 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - [ ] Prepare for Category Feature Implementation
 - [ ] Add Screen Category Functionality
 - [X] Implement File Change on Button Click
+
+![image](https://github.com/lilllee/Elixir/assets/45530877/2e0a5526-9075-4d5a-bd16-b9949ce5292f)
