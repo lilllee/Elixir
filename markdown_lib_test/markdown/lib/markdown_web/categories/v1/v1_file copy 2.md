@@ -1,6 +1,5 @@
 ----
-
-### TEST3
+Category Test V1 File
 
 Alright, let's migrate this React code to Vue.js! 😄
 

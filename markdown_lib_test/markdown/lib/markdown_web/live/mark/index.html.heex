@@ -1,6 +1,153 @@
-<h1> total files <%= @count %> </h1>
-<%= for m <- @fileList do %>
-    <button phx-click="mdClick" phx-value-filename={m}> <%= m %> </button>
-<% end %>
-<%= @markdown %>
+<style>
+.blog-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: auto;
+}
 
+.navbar {
+  display: flex;
+  background-color: #333;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.nav-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background-color: #45a049;
+}
+
+.content {
+  display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  @media (max-width: 768px) {
+    flex: none;
+    padding: 10px;
+  }
+}
+
+.category h3 {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.category h3:hover {
+  color: #4CAF50;
+}
+
+.file-btn {
+  display: block;
+  background-color: transparent;
+  color: #333;
+  padding: 5px;
+  margin: 5px 0;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.markdown-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  border-radius: 8px;
+  @media (max-width: 768px) {
+    margin: 20px 10px;
+  }
+}
+.breadcrumb {
+  background: #f8f9fa;
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+  padding: 0 0.5rem;
+  color: #6c757d;
+}
+
+.breadcrumb-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: default;
+}
+
+</style>
+<div class="blog-container">
+
+  <nav class="navbar">
+    <button class="nav-btn active" phx-click="mdClick" phx-value-filename="home"
+    phx-value-category="home"
+    >Home</button>
+  </nav>
+
+  <div class="content">
+    <div class="sidebar">
+      <%= for {category, files} <- @categoies do %>
+        <div class="category">
+          <h3 onclick="toggleCategory(this);"><%= category %></h3>
+          <div class="file-list">
+            <%= for file <- files do %>
+              <button class="file-btn" phx-click="mdClick" phx-value-filename={file}
+                phx-value-category={category}
+              > <%= file %> </button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="markdown-content">
+      <%= @markdown %>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleCategory(header) {
+    const fileList = header.nextElementSibling;
+    fileList.style.display = fileList.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
