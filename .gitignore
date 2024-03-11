@@ -7,3 +7,10 @@ erl_crash.dump
 *.ez
 *.beam
 /config/*.secret.exs
+
+
+### Rust
+*.o
+*.so
+*.rlib
+*.dll
