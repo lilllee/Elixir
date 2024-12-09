@@ -16,6 +16,7 @@ defmodule SocketServer.Application do
       # Start a worker by calling: SocketServer.Worker.start_link(arg)
       # {SocketServer.Worker, arg},
       # Start to serve requests, typically the last entry
+      SocketServerWeb.Presence,
       SocketServerWeb.Endpoint
     ]
 

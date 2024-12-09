@@ -1,15 +1,16 @@
 defmodule SocketServerWeb.UserSocket do
   use Phoenix.Socket
 
-  channel "register:*", SocketServerWeb.RegisterChannel
+  channel "user:*", SocketServerWeb.UserChannel
+  channel "admin:*", SocketServerWeb.AdminChannel
 
-  @spec connect(nil | maybe_improper_list() | map(), Phoenix.Socket.t(), any()) ::
+  @spec connect(nil | map(), Phoenix.Socket.t(), any()) ::
           {:ok, Phoenix.Socket.t()}
-  def connect(params, socket, _connect_params) do
-    {:ok, assign(socket |> IO.inspect(), :user_id, params["user_id"])}
+  def connect(params, socket, _connect_info) do
+    IO.inspect(params)
+    {:ok, assign(socket, :user_id, params["user_id"])}
   end
 
-  @spec id(any()) :: <<_::48, _::_*8>>
-  def id(socket), do: "users_#{socket.assigns.user_id}"
-
+  @spec id(any()) :: <<_::40, _::_*8>>
+  def id(socket), do: "user_#{socket.assigns.user_id}"
 end
