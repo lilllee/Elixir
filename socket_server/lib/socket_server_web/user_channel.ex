@@ -10,9 +10,11 @@ defmodule SocketServerWeb.UserChannel do
     if Presence.list("admin:lobby") |> map_size() === 0 do
       :ets.insert(:admin, {:"msg_#{:os.system_time(:millisecond)}", body})
     else
-      broadcast!(socket, "admin:lobby", %{"user_id" => socket.assigns.user_id, "body" => body})
+      SocketServerWeb.Endpoint.broadcast!("admin:lobby", "send_message", %{
+        "user_id" => socket.assigns.user_id,
+        "body" => body
+      })
     end
-
     {:noreply, socket}
   end
 

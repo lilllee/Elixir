@@ -27,12 +27,10 @@ socket_server-*.tar
 
 # .js files
 *.js
-
 *.xml
-
 *.iml
-
 /.idea
-
 /priv
 /test
+
+!**/endpoint.ex
