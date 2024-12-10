@@ -20,6 +20,9 @@ defmodule SocketServer.Application do
       SocketServerWeb.Endpoint
     ]
 
+    # ETS 테이블 생성
+    :ets.new(:admin, [:set, :public, :named_table])
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: SocketServer.Supervisor]
