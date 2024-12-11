@@ -15,10 +15,10 @@ defmodule SocketServerWeb.AdminChannel do
 
     if length(cached_msgs) > 0 do
       Enum.each(cached_msgs, fn {_key, msg} ->
-        broadcast!(socket, "admin:lobby", %{
+        SocketServerWeb.Endpoint.broadcast!("admin:lobby", "send_message", %{
           "user_id" => socket.assigns.user_id,
           "body" => msg
-        })
+        }) |> IO.inspect()
       end)
       :ets.delete_all_objects(:admin)
     end
